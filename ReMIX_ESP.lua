@@ -1,21 +1,3 @@
---[[
-    Created By: MustardFoot (2017)
-    Edited By: Neglected (2020)
-        - Long Live This Beautiful ESP -
-    
-    Changelog:
-        No longer any Background (eww..)
-        Border has been replaced with TextStroke
-        Text is now in TeamColor
-        ESP is now in TeamColor w/ a nice Outline
-        Removed Names in exchange for Health
-        Removed text2 (legit useless..)
---]]
-
-local setkey = "b"
-local waitduration = 0.5
-local plr = game:GetService('Players').LocalPlayer
-
 function getteam(plr)
 	local thang = nil
 	if plr.TeamColor then
