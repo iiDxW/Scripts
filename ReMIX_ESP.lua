@@ -1,3 +1,7 @@
+local setkey = "b"
+local waitduration = 0.5
+local plr = game:GetService('Players').LocalPlayer
+
 function getteam(plr)
 	local thang = nil
 	if plr.TeamColor then
