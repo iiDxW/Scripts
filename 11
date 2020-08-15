@@ -1,0 +1,149 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local primalsgui = Instance.new("ScreenGui")
+local mainframe = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local killplayersbutton = Instance.new("TextButton")
+local infammobutton = Instance.new("TextButton")
+local closebutton = Instance.new("TextButton")
+local openbutton = Instance.new("TextButton")
+
+--Properties:
+
+primalsgui.Name = "primalsgui"
+primalsgui.Parent = game.CoreGui
+primalsgui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+mainframe.Name = "mainframe"
+mainframe.Parent = primalsgui
+mainframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+mainframe.Position = UDim2.new(0.280303031, 0, 0.335984081, 0)
+mainframe.Size = UDim2.new(0, 331, 0, 132)
+mainframe.Style = Enum.FrameStyle.ChatBlue
+mainframe.Visible = false
+
+TextLabel.Parent = mainframe
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.165009752, 0, -0.128066093, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 25)
+TextLabel.Font = Enum.Font.Cartoon
+TextLabel.Text = "Primal's Nerf FPS GUI TEST"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 16.000
+
+killplayersbutton.Name = "killplayersbutton"
+killplayersbutton.Parent = mainframe
+killplayersbutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+killplayersbutton.BorderSizePixel = 0
+killplayersbutton.Position = UDim2.new(0.105020292, 0, 0.308395624, 0)
+killplayersbutton.Size = UDim2.new(0, 98, 0, 38)
+killplayersbutton.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+killplayersbutton.Font = Enum.Font.Cartoon
+killplayersbutton.Text = "Kill All"
+killplayersbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+killplayersbutton.TextSize = 14.000
+killplayersbutton.MouseButton1Down:connect(function()
+rs = game:GetService("ReplicatedStorage")
+for i,v in pairs(rs:GetChildren()) do
+    if v:IsA('RemoteEvent') then
+        if i == 46 then
+            kr = v
+            for e,d in pairs(game.Players:GetPlayers()) do
+                if d.Name ~= game.Players.LocalPlayer.Name then--and d.Team ~= game.Players.LocalPlayer.Team then
+                    local A_1 = 14906230
+                    local A_2 = d.Character
+                    local A_3 = 100
+                    local A_4 = "RECON"
+                    local A_5 = true
+                    local Event = kr
+                    Event:FireServer(A_1, A_2, A_3, A_4, A_5)
+                    --wait(1)
+                end
+            end
+        end
+    end
+end
+end)
+
+infammobutton.Name = "infammobutton"
+infammobutton.Parent = mainframe
+infammobutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+infammobutton.BorderSizePixel = 0
+infammobutton.Position = UDim2.new(0.564234793, 0, 0.308395624, 0)
+infammobutton.Size = UDim2.new(0, 98, 0, 38)
+infammobutton.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+infammobutton.Font = Enum.Font.Cartoon
+infammobutton.Text = "Inf Ammo"
+infammobutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+infammobutton.TextSize = 14.000
+infammobutton.MouseButton1Down:connect(function()
+    me = game.Players.LocalPlayer
+clip = me.PlayerGui.GUI.HUD.Clip
+s = me.PlayerGui.Framework
+rs = getsenv(s)
+for i,v in next, rs do
+    if type(v) == 'function' then
+        for e,d in next, getupvalues(v) do
+            if type(d) == 'table' then
+                for w,s in next, d do
+                    if type(s) == 'function' then
+                        for r,f in next, getupvalues(s) do
+                            if r == 1 or r == 8 then
+                                if type(f) == 'number' and f ~= math.huge then
+                                    --print(r,f)
+                                    setupvalue(s,r,math.huge)
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+end)
+
+closebutton.Name = "closebutton"
+closebutton.Parent = mainframe
+closebutton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+closebutton.BorderSizePixel = 0
+closebutton.Position = UDim2.new(0.971195459, 0, -0.0961598456, 0)
+closebutton.Size = UDim2.new(0, 22, 0, 26)
+closebutton.Font = Enum.Font.Cartoon
+closebutton.Text = "X"
+closebutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+closebutton.TextSize = 14.000
+closebutton.MouseButton1Down:connect(function()
+openbutton.Visible = true
+mainframe.Visible = false
+end)
+
+openbutton.Name = "openbutton"
+openbutton.Parent = primalsgui
+openbutton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+openbutton.Position = UDim2.new(0.00883838348, 0, 0.872763455, 0)
+openbutton.Size = UDim2.new(0, 112, 0, 50)
+openbutton.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+openbutton.Font = Enum.Font.Cartoon
+openbutton.Text = "Open"
+openbutton.TextColor3 = Color3.fromRGB(0, 0, 0)
+openbutton.TextSize = 14.000
+openbutton.MouseButton1Down:connect(function()
+mainframe.Visible = true
+openbutton.Visible = false
+end)
+
+-- Scripts:
+
+local function KUGAJZ_fake_script() -- mainframe.LocalScript 
+	local script = Instance.new('LocalScript', mainframe)
+
+	script.parent.Selectable = true
+	script.Parent.Active = true
+	script.parent.Draggable = true
+end
+coroutine.wrap(KUGAJZ_fake_script)()
