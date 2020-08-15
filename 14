@@ -1,0 +1,11 @@
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+	if key.KeyCode == Enum.KeyCode.LeftShift then
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 75
+	end
+end)
+
+game:GetService("UserInputService").InputEnded:Connect(function(key)
+	if key.KeyCode == Enum.KeyCode.LeftShift then
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+	end
+end)
