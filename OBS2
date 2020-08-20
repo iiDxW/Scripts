@@ -1,0 +1,63 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local OnButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local OffButton = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+
+local char = game:GetService("Players").LocalPlayer.Name
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Main.Position = UDim2.new(0, 108, 0.5, -52)
+Main.Size = UDim2.new(0, 100, 0, 118)
+Main.Active = true
+Main.Draggable = true
+UICorner.Parent = Main
+
+OnButton.Name = "OnButton"
+OnButton.Parent = Main
+OnButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+OnButton.BorderSizePixel = 0
+OnButton.Position = UDim2.new(0.5, -37, 0, 13)
+OnButton.Size = UDim2.new(0, 75, 0, 40)
+OnButton.Font = Enum.Font.SourceSansSemibold
+OnButton.Text = "On"
+OnButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+OnButton.TextSize = 21.000
+UICorner_2.Parent = OnButton
+
+OffButton.Name = "OffButton"
+OffButton.Parent = Main
+OffButton.BackgroundColor3 = Color3.fromRGB(67, 67, 67)
+OffButton.BorderSizePixel = 0
+OffButton.Position = UDim2.new(0.5, -37, 1, -53)
+OffButton.Size = UDim2.new(0, 75, 0, 40)
+OffButton.Font = Enum.Font.SourceSansSemibold
+OffButton.Text = "Off"
+OffButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+OffButton.TextSize = 21.000
+UICorner_3.Parent = OffButton
+
+game.Players.LocalPlayer.Character.Head.FireGifFX.Enabled = false
+
+OnButton.MouseButton1Click:Connect(function()
+    game.Players.LocalPlayer.Character.Head.FireGifFX.Enabled = true
+local number = 0
+_G.on = true
+while _G.on do wait()
+number = number + 1
+game:GetService("ReplicatedStorage").Events.OnlineWork:FireServer()
+game:GetService("ReplicatedStorage").PlrEvents[char]:FireServer(number)
+end
+end)
+
+OffButton.MouseButton1Click:Connect(function()
+    game.Players.LocalPlayer.Character.Head.FireGifFX.Enabled = false
+_G.on = false
+end)
